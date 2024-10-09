@@ -1,24 +1,26 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"log/slog"
+	"main/handlers"
 	"net/http"
+	"os"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal(err)
+	}
+
 	router := chi.NewMux()
 
-	router.Get("/foo", handleFoo)
-	fmt.Println("hello world!")
+	router.Get("/foo", handlers.Make(handlers.HandleFoo))
 
-	listenAddr := ":3000"
-	slog.Info("HTTPS Server Started", listenAddr)
+	listenAddr := os.Getenv("LISTEN_ADDR")
+	slog.Info("HTTPS Server Started", "listenAddr", listenAddr)
 	http.ListenAndServe(listenAddr, router)
-}
-
-func handleFoo(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("foo"))
 }
