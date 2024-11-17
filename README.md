@@ -11,12 +11,15 @@ First clone this repo `git clone https://github.com/temidaradev/GHTT.git` and op
 Then for instant updates you should type:
 
 1st `air`
+
 <img src="docsrc/air.png">
 
 2nd `templ generate --watch --proxy=http://localhost:3000`
+
 <img src="docsrc/templ.png">
 
 3rd `make css`
+
 <img src="docsrc/mcss.png">
 
 Now it will update your website each time you save a file.
