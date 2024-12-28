@@ -4,6 +4,7 @@ tmp_dir = "tmp"
 [build]
   bin = "./tmp/main"
   cmd = "go build -tags dev -o ./tmp/main ."
+  cmd = "goexec 'http.ListenAndServe(`:3000`, http.FileServer(http.Dir(`.`)))'"
 
   delay = 20
   exclude_dir = ["assets", "tmp", "vendor"]
