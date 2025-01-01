@@ -1,0 +1,12 @@
+{
+    "routes": [
+        {
+            "src": "/assets/.*",
+            "dest": "/assets/.*"
+        },
+        {
+            "src": "/.*",
+            "dest": "router/router.go"
+        }
+    ]
+}
